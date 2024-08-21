@@ -24,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # Enable verbose output for debugging
+          # Ensure full repository history is fetched
           fetch-depth: 0
 
       - name: Set up Node
@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: '20'
           cache: 'yarn'
-        # Add a log to confirm Node setup
+        # Log Node.js version
         run: echo "Node.js version $(node -v)"
 
       - name: Install dependencies
@@ -49,23 +49,14 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        with:
-          # Enable verbose output for debugging
-          verbose: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
-        # Add a log to confirm artifact upload
+        # Log artifact upload
         run: echo "Artifact uploaded from ./dist."
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        # Log deployment details
-        with:
-          verbose: true
-        run: |
-          echo "Deploying to GitHub Pages..."
-          echo "Deployment URL: ${{ steps.deployment.outputs.page_url }}"
