@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {createBrowserRouter, RouterProvider,} from 'react-router-dom';
+import {createHashRouter, RouterProvider} from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
@@ -12,7 +12,7 @@ console.log(11111, getPath('about'))
 console.log(11111, getPath(''))
 console.log(11111, getPath('donate'))
 console.log(11111, getPath('contact'))
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: '/',
         element: <Layout/>,
